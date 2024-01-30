@@ -9,15 +9,20 @@ export const BotaoTema = styled.button`
   border-radius: 12px;
   border: none;
   padding: 8px;
-  color: #eee;
+  color: ${(props) => props.theme.corDeFundo};
   font-size: 10px;
   font-weight: bold;
-  background-color: #282a25;
+  background-color: ${(props) => props.theme.corPrincipal};
   cursor: pointer;
 `
 export const SidebarContainer = styled.div`
   position: sticky;
   top: 80px;
   left: 0;
-  width: 162px;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    margin-bottom: 40px;
+    text-align: center;
+  }
 `
