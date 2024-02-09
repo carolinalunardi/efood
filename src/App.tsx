@@ -1,5 +1,17 @@
+import { BrowserRouter } from 'react-router-dom'
+import { GlobalCss } from './styles'
+
+import Paths from './routes'
+import Footer from './components/Footer'
+
 function App() {
-  return <h1>Olá</h1>
+  return (
+    <BrowserRouter>
+      <GlobalCss />
+      <Paths />
+      <Footer />
+    </BrowserRouter>
+  )
 }
 
 export default App
