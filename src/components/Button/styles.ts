@@ -8,9 +8,11 @@ export const ButtonAdd = styled.button`
   color: ${colors.rose};
   font-size: 14px;
   font-weight: bold;
-  padding: 4px auto;
+  padding: 4px;
+  width: 100%;
   text-align: center;
-  border-none;
+  border: none;
+  cursor: pointer;
 `
 
 export const ButtonLink = styled(Link)`

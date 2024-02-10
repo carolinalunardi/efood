@@ -6,6 +6,10 @@ export const Card = styled.div`
   display: block;
   margin-bottom: 48px;
   position: relative;
+
+  img {
+    vertical-align: middle;
+  }
 `
 export const Infos = styled.div`
   font-size: 18px;
