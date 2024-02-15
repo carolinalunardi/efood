@@ -9,11 +9,17 @@ export const Card = styled.div`
 
   img {
     vertical-align: middle;
+    width: 472px;
+    height: 218px;
+    object-fit: cover;
   }
 `
 export const Infos = styled.div`
-  font-size: 18px;
-  font-weight: bold;
+  h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -22,6 +28,10 @@ export const Infos = styled.div`
 export const Rating = styled.div`
   display: flex;
   gap: 8px;
+
+  img {
+    width: 21px;
+    height: 21px;
   }
 `
 export const Description = styled.p`

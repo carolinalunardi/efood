@@ -6,7 +6,7 @@ import Page from './pages/Page'
 const Paths = () => (
   <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/place" element={<Page />} />
+    <Route path="/place/:id" element={<Page />} />
   </Routes>
 )
 

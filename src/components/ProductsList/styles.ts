@@ -9,6 +9,3 @@ export const List = styled.ul`
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 32px;
 `
-export const Item = styled.li`
-  margin-botton: 32px;
-`

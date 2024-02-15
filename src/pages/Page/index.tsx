@@ -1,9 +1,12 @@
+import { useParams } from 'react-router-dom'
+
 import Banner from '../../components/Banner'
 import Header from '../../components/Header'
 import ProductsList from '../../components/ProductsList'
 import Food from '../../models/Food'
 
 import pizza from '../../assets/images/pizza.png'
+import imageRest from '../../assets/images/cover.png'
 
 const foodItem: Food[] = [
   {
@@ -50,12 +53,20 @@ const foodItem: Food[] = [
   }
 ]
 
-const Page = () => (
-  <>
-    <Header />
-    <Banner />
-    <ProductsList foods={foodItem} />
-  </>
-)
+const Page = () => {
+  const { id } = useParams()
+
+  return (
+    <>
+      <Header />
+      <Banner
+        cuisine="Italiana"
+        title="La Dolce Vita Trattoria"
+        image={imageRest}
+      />
+      <ProductsList foods={foodItem} />
+    </>
+  )
+}
 
 export default Page

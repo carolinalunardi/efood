@@ -1,7 +1,7 @@
 import { TagContainer } from './styles'
 
-type Props = {
-  children: string
+export type Props = {
+  children: string | boolean
 }
 
 const Tag = ({ children }: Props) => <TagContainer>{children}</TagContainer>

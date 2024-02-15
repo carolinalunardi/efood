@@ -1,16 +1,22 @@
 import { BannerRest, TitleCuisine, TitleRest } from './styles'
 import imageRest from '../../assets/images/cover.png'
 
-const SecondBanner = () => (
+type Props = {
+  image: string
+  cuisine: string
+  title: string
+}
+
+const SecondBanner = ({ image, cuisine, title }: Props) => (
   <BannerRest
     style={{
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${imageRest})`
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})`
     }}
   >
     <div className="container">
-      <TitleCuisine>Italiana</TitleCuisine>
+      <TitleCuisine>{cuisine}</TitleCuisine>
 
-      <TitleRest>La Dolce Vita Trattoria</TitleRest>
+      <TitleRest>{title}</TitleRest>
     </div>
   </BannerRest>
 )
