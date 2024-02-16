@@ -29,6 +29,7 @@ export const TitleCuisine = styled.h2`
   font-size: 32px;
   font-weight: 100;
   margin-top: 24px;
+  text-transform: capitalize;
 `
 export const TitleRest = styled.h1`
   color: ${colors.white};

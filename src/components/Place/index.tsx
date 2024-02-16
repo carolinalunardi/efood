@@ -11,18 +11,16 @@ import {
 } from './styles'
 import Button from '../Button'
 
-import Restaurant from '../../pages/Home'
-
-type Props = {
+export type Props = {
+  id: number
   image: string
-  infos: string
   title: string
   resume: string
+  infos: string
   rating: number
-  id: number
 }
 
-const Place = ({ image, infos, title, resume, rating, id }: Props) => {
+const Place = ({ id, image, title, resume, infos, rating }: Props) => {
   const getDescription = (descricao: string) => {
     if (descricao.length > 200) {
       return descricao.slice(0, 195) + '...'

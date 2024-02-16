@@ -8,10 +8,17 @@ export type Props = {
   image: string
   title: string
   description: string
-  info?: string
+  id: number
 }
 
-const Product = ({ image, title, description, info }: Props) => {
+const Product = ({ image, title, description }: Props) => {
+  const getDescription = (descricao: string) => {
+    if (descricao.length > 200) {
+      return descricao.slice(0, 120) + '...'
+    }
+    return descricao
+  }
+
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
   return (
@@ -19,7 +26,7 @@ const Product = ({ image, title, description, info }: Props) => {
       <CardProduct>
         <img src={image} alt={title} />
         <h3>{title}</h3>
-        <p>{description}</p>
+        <p>{getDescription(description)}</p>
         <ButtonAdd onClick={() => setModalIsOpen(true)}>
           Adicionar ao carrinho
         </ButtonAdd>

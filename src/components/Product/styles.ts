@@ -6,6 +6,11 @@ export const CardProduct = styled.div`
   padding: 8px;
   margin-bottom: 32px;
 
+  img {
+    width: 304px;
+    height: 168px;
+  }
+
   h3 {
     color: ${colors.lightRose};
     font-weight: 900;
