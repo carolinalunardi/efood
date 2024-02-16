@@ -15,10 +15,11 @@ const ProductsList = ({ foods }: Props) => {
           {foods.cardapio.map((cardapio) => (
             <li key={cardapio.id}>
               <Product
-                id={cardapio.id}
                 image={cardapio.foto}
                 title={cardapio.nome}
                 description={cardapio.descricao}
+                portion={cardapio.porcao}
+                price={cardapio.preco}
               />
             </li>
           ))}

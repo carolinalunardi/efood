@@ -6,6 +6,7 @@ import PlacesList from '../../components/PlacesList'
 export type Restaurant = {
   id: number
   titulo: string
+  destacado?: boolean
   tipo: string
   avaliacao: number
   descricao: string

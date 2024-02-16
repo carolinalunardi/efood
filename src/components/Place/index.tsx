@@ -16,7 +16,7 @@ export type Props = {
   image: string
   title: string
   resume: string
-  infos: string
+  infos: string[]
   rating: number
 }
 
@@ -32,7 +32,9 @@ const Place = ({ id, image, title, resume, infos, rating }: Props) => {
     <Card>
       <img src={image} alt={title} />
       <TagsContainer>
-        <Tag>{infos}</Tag>
+        {infos.map((info) => (
+          <Tag key={info}>{info}</Tag>
+        ))}
       </TagsContainer>
       <InfosContainer>
         <Infos>
