@@ -3,20 +3,35 @@ import { Link } from 'react-router-dom'
 import banner from '../../assets/images/banner.png'
 import logo from '../../assets/images/logo.svg'
 
-import { ContentBanner, ImageBanner, TitleHeader } from './styles'
+import { ContentBanner, ImageBanner, CartButton, TitleHeader } from './styles'
 
-const Banner = () => (
-  <ImageBanner style={{ backgroundImage: `url(${banner})` }}>
-    <div className="container">
-      <ContentBanner>
-        <TitleHeader href="/">Restaurantes</TitleHeader>
-        <Link to="/">
-          <img src={logo} alt="logo" />
-        </Link>
-        <TitleHeader href="#">0 produto(s) no carrinho</TitleHeader>
-      </ContentBanner>
-    </div>
-  </ImageBanner>
-)
+import { open } from '../../store/reducers/cart'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+
+const Banner = () => {
+  const dispatch = useDispatch()
+  const { items } = useSelector((state: RootReducer) => state.cart)
+
+  const openCart = () => {
+    dispatch(open())
+  }
+
+  return (
+    <ImageBanner style={{ backgroundImage: `url(${banner})` }}>
+      <div className="container">
+        <ContentBanner>
+          <TitleHeader href="/">Restaurantes</TitleHeader>
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
+          <CartButton onClick={openCart} href="#">
+            {items.length} produto(s) no carrinho
+          </CartButton>
+        </ContentBanner>
+      </div>
+    </ImageBanner>
+  )
+}
 
 export default Banner

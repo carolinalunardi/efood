@@ -1,8 +1,11 @@
+import { useState } from 'react'
+
 import { ButtonAdd } from '../Button/styles'
 import { CardProduct, Content, Modal, ModalContent } from './styles'
 import fechar from '../../assets/images/close.png'
+import { useDispatch } from 'react-redux'
 
-import { useState } from 'react'
+import { add } from '../../store/reducers/cart'
 
 export type Props = {
   image: string
@@ -31,6 +34,11 @@ const Product = ({ image, title, description, portion, price }: Props) => {
 
   const formatefPrice = formatPrice(price)
 
+  const dispatch = useDispatch()
+  const addToCart = () => {
+    dispatch(add())
+  }
+
   return (
     <>
       <CardProduct>
@@ -57,7 +65,9 @@ const Product = ({ image, title, description, portion, price }: Props) => {
               <p>{description}</p>
               <p>Serve: {portion}</p>
               <div className="button">
-                <ButtonAdd>Adicionar ao carrinho - {formatefPrice}</ButtonAdd>
+                <ButtonAdd onClick={addToCart}>
+                  Adicionar ao carrinho - {formatefPrice}
+                </ButtonAdd>
               </div>
             </div>
           </Content>
