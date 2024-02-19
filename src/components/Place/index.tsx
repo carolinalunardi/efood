@@ -17,7 +17,7 @@ export type Props = {
   title: string
   resume: string
   infos: string[]
-  rating: number
+  rating: string
 }
 
 const Place = ({ id, image, title, resume, infos, rating }: Props) => {

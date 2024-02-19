@@ -25,7 +25,7 @@ const Banner = () => {
           <Link to="/">
             <img src={logo} alt="logo" />
           </Link>
-          <CartButton onClick={openCart} href="#">
+          <CartButton onClick={openCart}>
             {items.length} produto(s) no carrinho
           </CartButton>
         </ContentBanner>

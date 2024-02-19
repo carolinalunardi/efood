@@ -5,17 +5,25 @@ import { CardProduct, Content, Modal, ModalContent } from './styles'
 import fechar from '../../assets/images/close.png'
 import { useDispatch } from 'react-redux'
 
-import { add } from '../../store/reducers/cart'
+import { add, open } from '../../store/reducers/cart'
+import { priceBRL } from '../../utils'
 
-export type Props = {
-  image: string
-  title: string
-  description: string
-  portion: string
-  price: number
-}
+const Product = ({ nome, foto, descricao, preco, porcao, id }: Menu) => {
+  const dispatch = useDispatch()
+  const menu: Menu = {
+    id,
+    foto,
+    nome,
+    descricao,
+    porcao,
+    preco
+  }
 
-const Product = ({ image, title, description, portion, price }: Props) => {
+  const addToCart = () => {
+    dispatch(add(menu))
+    dispatch(open())
+  }
+
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
   const getDescription = (descricao: string) => {
@@ -25,26 +33,12 @@ const Product = ({ image, title, description, portion, price }: Props) => {
     return descricao
   }
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('pt-br', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(price)
-  }
-
-  const formatefPrice = formatPrice(price)
-
-  const dispatch = useDispatch()
-  const addToCart = () => {
-    dispatch(add())
-  }
-
   return (
     <>
       <CardProduct>
-        <img src={image} alt={title} />
-        <h3>{title}</h3>
-        <p>{getDescription(description)}</p>
+        <img src={foto} alt={nome} />
+        <h3>{nome}</h3>
+        <p>{getDescription(descricao)}</p>
         <ButtonAdd onClick={() => setModalIsOpen(true)}>
           Adicionar ao carrinho
         </ButtonAdd>
@@ -59,14 +53,14 @@ const Product = ({ image, title, description, portion, price }: Props) => {
             />
           </header>
           <Content>
-            <img src={image} alt={title} />
+            <img src={foto} alt={nome} />
             <div>
-              <h3>{title}</h3>
-              <p>{description}</p>
-              <p>Serve: {portion}</p>
+              <h3>{nome}</h3>
+              <p>{descricao}</p>
+              <p>Serve: {porcao}</p>
               <div className="button">
                 <ButtonAdd onClick={addToCart}>
-                  Adicionar ao carrinho - {formatefPrice}
+                  Adicionar ao carrinho - {priceBRL(preco)}
                 </ButtonAdd>
               </div>
             </div>

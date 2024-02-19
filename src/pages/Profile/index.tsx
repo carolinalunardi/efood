@@ -9,21 +9,17 @@ import Cart from '../../components/Cart'
 
 const Profile = () => {
   const { id } = useParams()
-  const { data: product } = useGetMenuQuery(id!)
+  const { data: menu } = useGetMenuQuery(id!)
 
-  if (!product) {
+  if (!menu) {
     return <h3>Carregando...</h3>
   }
 
   return (
     <>
       <Header />
-      <Banner
-        image={product.capa}
-        cuisine={product.tipo}
-        title={product.titulo}
-      />
-      <ProductsList foods={product} />
+      <Banner image={menu.capa} cuisine={menu.tipo} title={menu.titulo} />
+      <ProductsList foods={menu.cardapio} />
       <Cart />
     </>
   )

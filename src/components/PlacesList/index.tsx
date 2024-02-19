@@ -1,13 +1,12 @@
 import Place from '../Place'
 import { Container, List } from './styles'
-import { Restaurant } from '../../pages/Home'
 
-export type Props = {
-  restaurants: Restaurant[]
+type Props = {
+  restaurants: Food[]
 }
 
 const PlacesList = ({ restaurants }: Props) => {
-  const getRestaurantTags = (restaurant: Restaurant) => {
+  const getRestaurantTags = (restaurant: Food) => {
     const infos = []
 
     if (restaurant.destacado) {
