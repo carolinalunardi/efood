@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const ImageBanner = styled.div`
   width: 100%;
@@ -10,11 +10,20 @@ export const ContentBanner = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+  }
+
   a {
     color: ${colors.rose};
     text-decoration: none;
     font-weight: bold;
     margin-top: 64px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      font-size: 16px;
+      margin-top: 24px;
+    }
   }
 `
 export const TitleHeader = styled.a`
