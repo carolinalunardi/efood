@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const Overlay = styled.div`
   position: absolute;
@@ -30,6 +30,10 @@ export const Sidebar = styled.aside`
   padding: 32px 8px;
   max-width: 360px;
   width: 100%;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 80%;
+  }
 `
 export const Item = styled.li`
   background-color: ${colors.lightRose};

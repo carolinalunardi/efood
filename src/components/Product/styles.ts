@@ -80,11 +80,22 @@ export const ModalContent = styled.div`
     height: 280px;
     object-fit: inherit;
     margin-right: 24px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      display: flex;
+      width: 120px;
+      height: 120px;
+      margin-bottom: 16px;
+    }
   }
 `
 export const Content = styled.div`
   padding: 0 32px 32px 32px;
   display: flex;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+  }
 
   h3 {
     font-size: 18px;
@@ -103,5 +114,9 @@ export const Content = styled.div`
   button {
     margin-left: 0;
     width: 280px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      width: 100%;
+    }
   }
 `
