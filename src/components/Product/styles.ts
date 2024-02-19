@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const CardProduct = styled.div`
   background-color: ${colors.rose};
@@ -9,6 +9,10 @@ export const CardProduct = styled.div`
   img {
     width: 304px;
     height: 168px;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      width: 100%;
+    }
   }
 
   h3 {
