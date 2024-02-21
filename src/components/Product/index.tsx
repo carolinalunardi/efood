@@ -1,9 +1,9 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 import { ButtonAdd } from '../Button/styles'
-import { CardProduct, Content, Modal, ModalContent } from './styles'
+import * as S from './styles'
 import fechar from '../../assets/images/close.png'
-import { useDispatch } from 'react-redux'
 
 import { add, open } from '../../store/reducers/cart'
 import { priceBRL } from '../../utils'
@@ -35,16 +35,16 @@ const Product = ({ nome, foto, descricao, preco, porcao, id }: Menu) => {
 
   return (
     <>
-      <CardProduct>
+      <S.CardProduct>
         <img src={foto} alt={nome} />
         <h3>{nome}</h3>
         <p>{getDescription(descricao)}</p>
         <ButtonAdd onClick={() => setModalIsOpen(true)}>
           Adicionar ao carrinho
         </ButtonAdd>
-      </CardProduct>
-      <Modal className={modalIsOpen ? 'visible' : ''}>
-        <ModalContent className="container">
+      </S.CardProduct>
+      <S.Modal className={modalIsOpen ? 'visible' : ''}>
+        <S.ModalContent className="container">
           <header>
             <img
               src={fechar}
@@ -52,7 +52,7 @@ const Product = ({ nome, foto, descricao, preco, porcao, id }: Menu) => {
               onClick={() => setModalIsOpen(false)}
             />
           </header>
-          <Content>
+          <S.Content>
             <img src={foto} alt={nome} />
             <div>
               <h3>{nome}</h3>
@@ -64,10 +64,10 @@ const Product = ({ nome, foto, descricao, preco, porcao, id }: Menu) => {
                 </ButtonAdd>
               </div>
             </div>
-          </Content>
-        </ModalContent>
+          </S.Content>
+        </S.ModalContent>
         <div className="overlay" onClick={() => setModalIsOpen(false)}></div>
-      </Modal>
+      </S.Modal>
     </>
   )
 }

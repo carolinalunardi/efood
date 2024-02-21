@@ -1,5 +1,5 @@
 import Place from '../Place'
-import { Container, List } from './styles'
+import * as S from './styles'
 
 type Props = {
   restaurants: Food[]
@@ -19,9 +19,9 @@ const PlacesList = ({ restaurants }: Props) => {
   }
 
   return (
-    <Container>
+    <S.Container>
       <div className="container">
-        <List>
+        <S.List>
           {restaurants.map((restaurant) => (
             <li key={restaurant.id}>
               <Place
@@ -34,9 +34,9 @@ const PlacesList = ({ restaurants }: Props) => {
               />
             </li>
           ))}
-        </List>
+        </S.List>
       </div>
-    </Container>
+    </S.Container>
   )
 }
 

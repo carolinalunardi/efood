@@ -3,13 +3,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 type CartState = {
   items: Menu[]
   isOpen: boolean
+  checkIsOpen: boolean
 }
-
 const initialState: CartState = {
   items: [],
-  isOpen: false
+  isOpen: false,
+  checkIsOpen: false
 }
-
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
@@ -19,7 +19,7 @@ const cartSlice = createSlice({
       if (product === undefined) {
         state.items.push(action.payload)
       } else {
-        alert('Este produto já está no carrinho')
+        alert('o produto ja esta no carrinho')
       }
     },
     remove: (state, action: PayloadAction<number>) => {
@@ -30,9 +30,18 @@ const cartSlice = createSlice({
     },
     close: (state) => {
       state.isOpen = false
+    },
+    openCheck: (state) => {
+      state.checkIsOpen = true
+    },
+    closeCheck: (state) => {
+      state.checkIsOpen = false
+    },
+    clear: (state) => {
+      state.items = []
     }
   }
 })
-
-export const { add, open, close, remove } = cartSlice.actions
+export const { add, remove, open, close, openCheck, closeCheck, clear } =
+  cartSlice.actions
 export default cartSlice.reducer

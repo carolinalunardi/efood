@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 import banner from '../../assets/images/banner.png'
 import logo from '../../assets/images/logo.svg'
 
-import { ContentBanner, ImageBanner, CartButton, TitleHeader } from './styles'
+import * as S from './styles'
 
 import { open } from '../../store/reducers/cart'
-import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 
 const Banner = () => {
@@ -18,19 +18,21 @@ const Banner = () => {
   }
 
   return (
-    <ImageBanner style={{ backgroundImage: `url(${banner})` }}>
+    <S.ImageBanner style={{ backgroundImage: `url(${banner})` }}>
       <div className="container">
-        <ContentBanner>
-          <TitleHeader href="/">Restaurantes</TitleHeader>
+        <S.ContentBanner>
+          <S.TitleHeader href="/">Restaurantes</S.TitleHeader>
           <Link to="/">
-            <img src={logo} alt="logo" />
+            <h1>
+              <img src={logo} alt="logo" />
+            </h1>
           </Link>
-          <CartButton onClick={openCart}>
+          <S.CartButton onClick={openCart}>
             {items.length} produto(s) no carrinho
-          </CartButton>
-        </ContentBanner>
+          </S.CartButton>
+        </S.ContentBanner>
       </div>
-    </ImageBanner>
+    </S.ImageBanner>
   )
 }
 

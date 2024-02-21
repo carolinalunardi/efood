@@ -1,4 +1,4 @@
-import { BannerRest, TitleCuisine, TitleRest } from './styles'
+import * as S from './styles'
 
 export type Props = {
   image: string
@@ -8,17 +8,17 @@ export type Props = {
 
 const SecondBanner = ({ image, cuisine, title }: Props) => {
   return (
-    <BannerRest
+    <S.BannerRest
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})`
       }}
     >
       <div className="container">
-        <TitleCuisine>{cuisine}</TitleCuisine>
+        <S.TitleCuisine>{cuisine}</S.TitleCuisine>
 
-        <TitleRest>{title}</TitleRest>
+        <S.TitleRest>{title}</S.TitleRest>
       </div>
-    </BannerRest>
+    </S.BannerRest>
   )
 }
 

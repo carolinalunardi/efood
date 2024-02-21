@@ -6,13 +6,19 @@ import ProductsList from '../../components/ProductsList'
 
 import { useGetMenuQuery } from '../../services/api'
 import Cart from '../../components/Cart'
+import Checkout from '../../components/Checkout'
+import Loader from '../../components/Loader'
+
+type MenuParams = {
+  id: string
+}
 
 const Profile = () => {
-  const { id } = useParams()
-  const { data: menu } = useGetMenuQuery(id!)
+  const { id } = useParams() as MenuParams
+  const { data: menu } = useGetMenuQuery(id)
 
   if (!menu) {
-    return <h3>Carregando...</h3>
+    return <Loader />
   }
 
   return (
@@ -21,6 +27,7 @@ const Profile = () => {
       <Banner image={menu.capa} cuisine={menu.tipo} title={menu.titulo} />
       <ProductsList foods={menu.cardapio} />
       <Cart />
+      <Checkout />
     </>
   )
 }

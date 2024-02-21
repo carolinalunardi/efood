@@ -1,17 +1,13 @@
-import { ButtonAdd } from '../Button/styles'
-import {
-  CartContainer,
-  Overlay,
-  Sidebar,
-  Total,
-  Item,
-  TrashIcon
-} from './styles'
-
-import lixeira from '../../assets/images/lixeira.png'
 import { useDispatch, useSelector } from 'react-redux'
+
+import * as S from './styles'
+import trash from '../../assets/images/lixeira.png'
+
+import Card from '../Card'
+import Button from '../Button'
+
 import { RootReducer } from '../../store'
-import { close, remove } from '../../store/reducers/cart'
+import { close, openCheck, remove } from '../../store/reducers/cart'
 import { getTotalPrice, priceBRL } from '../../utils'
 
 const Cart = () => {
@@ -19,8 +15,9 @@ const Cart = () => {
 
   const dispatch = useDispatch()
 
-  const closeCart = () => {
+  const goToCheckout = () => {
     dispatch(close())
+    dispatch(openCheck())
   }
 
   const removeItem = (id: number) => {
@@ -28,34 +25,42 @@ const Cart = () => {
   }
 
   return (
-    <CartContainer className={isOpen ? 'is-open' : ''}>
-      <Overlay onClick={closeCart} />
-      <Sidebar>
-        <ul>
-          {items.map((item) => (
-            <Item key={item.id}>
-              <img src={item.foto} alt={item.nome} />
-              <div>
-                <h3>{item.nome}</h3>
-                <p>{priceBRL(item.preco)}</p>
-                <TrashIcon>
-                  <img
-                    onClick={() => removeItem(item.id)}
-                    src={lixeira}
-                    alt="ícone para deletar produto do carrinho"
-                  />
-                </TrashIcon>
-              </div>
-            </Item>
-          ))}
-        </ul>
-        <Total>
-          <p>Valor total</p>
-          <p>{priceBRL(getTotalPrice(items))}</p>
-        </Total>
-        <ButtonAdd>Continuar com a entrega</ButtonAdd>
-      </Sidebar>
-    </CartContainer>
+    <S.CartContainer className={isOpen ? 'is-open' : ''}>
+      <Card>
+        {items.length > 0 ? (
+          <>
+            <ul>
+              {items.map((item) => (
+                <S.Item key={item.id}>
+                  <img src={item.foto} alt={item.nome} />
+                  <div>
+                    <h3>{item.nome}</h3>
+                    <p>{priceBRL(item.preco)}</p>
+                  </div>
+                  <S.TrashImg onClick={() => removeItem(item.id)}>
+                    <img src={trash} alt="remover" />
+                  </S.TrashImg>
+                </S.Item>
+              ))}
+            </ul>
+            <S.Price className="margin-bottom">
+              Valor Total <span>{priceBRL(getTotalPrice(items))}</span>
+            </S.Price>
+            <Button
+              onClick={goToCheckout}
+              title="Clique aqui para continuar com a entrega"
+              type="button"
+            >
+              Continue com a entrega
+            </Button>
+          </>
+        ) : (
+          <p className="text">
+            O carrinho está vazio, adicione ao menos um produto.
+          </p>
+        )}
+      </Card>
+    </S.CartContainer>
   )
 }
 

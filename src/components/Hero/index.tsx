@@ -1,14 +1,19 @@
-import { ImageHero, Logo, Title } from './styles'
+import * as S from './styles'
 import imageHero from '../../assets/images/banner.png'
 import logo from '../../assets/images/logo.svg'
+import { Link } from 'react-router-dom'
 
 const Hero = () => (
-  <ImageHero style={{ backgroundImage: `url(${imageHero})` }}>
-    <Logo src={logo} alt="logo" />
-    <Title>
+  <S.ImageHero style={{ backgroundImage: `url(${imageHero})` }}>
+    <Link to="/">
+      <h1>
+        <img src={logo} alt="Efood" />
+      </h1>
+    </Link>
+    <S.Title>
       Viva experiências gastronômicas <br /> no conforto da sua casa
-    </Title>
-  </ImageHero>
+    </S.Title>
+  </S.ImageHero>
 )
 
 export default Hero

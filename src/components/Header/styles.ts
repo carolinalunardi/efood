@@ -34,4 +34,5 @@ export const TitleHeader = styled.a`
 export const CartButton = styled.a`
   font-weight: 900;
   font-size: 18px;
+  cursor: pointer;
 `

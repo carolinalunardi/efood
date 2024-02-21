@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const TagContainer = styled.div`
   background-color: ${colors.rose};
@@ -10,4 +10,9 @@ export const TagContainer = styled.div`
   display: inline-block;
   margin-right: 8px;
   text-transform: capitalize;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-bottom: 8px;
+    margin-left: 8px;
+  }
 `

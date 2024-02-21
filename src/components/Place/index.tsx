@@ -1,14 +1,7 @@
 import Tag from '../Tag'
 
 import star from '../../assets/images/star.svg'
-import {
-  Card,
-  Description,
-  Infos,
-  InfosContainer,
-  Rating,
-  TagsContainer
-} from './styles'
+import * as S from './styles'
 import Button from '../Button'
 
 export type Props = {
@@ -29,22 +22,22 @@ const Place = ({ id, image, title, resume, infos, rating }: Props) => {
   }
 
   return (
-    <Card>
+    <S.Card>
       <img src={image} alt={title} />
-      <TagsContainer>
+      <S.TagsContainer>
         {infos.map((info) => (
           <Tag key={info}>{info}</Tag>
         ))}
-      </TagsContainer>
-      <InfosContainer>
-        <Infos>
+      </S.TagsContainer>
+      <S.InfosContainer>
+        <S.Infos>
           <h3>{title}</h3>
-          <Rating>
+          <S.Rating>
             <h3>{rating}</h3>
             <img src={star} />
-          </Rating>
-        </Infos>
-        <Description>{getDescription(resume)}</Description>
+          </S.Rating>
+        </S.Infos>
+        <S.Description>{getDescription(resume)}</S.Description>
         <Button
           type="link"
           to={`/place/${id}`}
@@ -52,8 +45,8 @@ const Place = ({ id, image, title, resume, infos, rating }: Props) => {
         >
           Saiba mais
         </Button>
-      </InfosContainer>
-    </Card>
+      </S.InfosContainer>
+    </S.Card>
   )
 }
 
