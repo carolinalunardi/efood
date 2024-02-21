@@ -24,6 +24,11 @@ export const Item = styled.li`
   margin: 16px 0;
   position: relative;
   gap: 8px;
+
+  img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
   }
 
   h3 {
@@ -37,13 +42,6 @@ export const Item = styled.li`
     font-size: 14px;
     color: ${colors.rose};
   }
-
-  img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-  }
-
 `
 export const TrashImg = styled.div`
   img {
